@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="বাংলা বয়স ক্যালকুলেটর">
+  <title>বয়স ক্যালকুলেটর</title>
+  <link rel="stylesheet" href="https://masumbillah6778.github.io/fonts/bangla/bangla-custom-font.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href=" https://rab-8.github.io/css/age-calculator-v2.css">
+</head>
+<body>
+  <main class="calculator">
+    <form id="ageForm" novalidate>
+      <section class="calculator-box">
+        <header class="enter">
+          <h1>নিচে আপনার জন্ম তারিখ দিন ইংরেজিতে</h1>
+        </header>
+        <div class="fields">
+          <div class="block">
+            <label class="title" for="date">দিন</label>
+            <input type="text" name="date" id="date" placeholder="দিন" inputmode="numeric" minlength="1" maxlength="2" autocomplete="bday-day" required>
+          </div>
+          <div class="block">
+            <label class="title" for="month">মাস</label>
+            <input type="text" name="month" id="month" placeholder="মাস" inputmode="numeric" minlength="1" maxlength="2" autocomplete="bday-month" required>
+          </div>
+          <div class="block">
+            <label class="title" for="year">সাল</label>
+            <input type="text" name="year" id="year" placeholder="সাল" inputmode="numeric" minlength="4" maxlength="4" autocomplete="bday-year" required>
+          </div>
+        </div>
+      </section>
+      <div class="submit-wrap">
+        <input type="button" id="calculate" value="বয়স দেখুন">
+      </div>
+      <div id="age" role="status" aria-live="polite"></div>
+    </form>
+  </main>
+  <script src="https://rab-8.github.io/js/age-calculator-v2.js"></script>
+</body>
+</html>
