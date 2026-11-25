@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Live Web View</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #06101f;
+    font-family: Arial, sans-serif;
+}
+
+/* পুরো Live View */
+.live-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #000;
+}
+
+/* Website View */
+#liveView {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: #fff;
+}
+
+/* Loading */
+.loading {
+  width: 100%;
+  line-height: 2;
+  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+    background: rgba(0,0,0,0.75);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Error message */
+.error {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    color: white;
+    background: #8b0000;
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 10;
+}
+
+.error h2 {
+    margin-bottom: 10px;
+}
+
+.error p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="live-container">
+
+    <!-- এখানে লাইভ ওয়েবসাইট দেখা যাবে -->
+    <iframe
+        id="liveView"
+        allow="fullscreen"
+        loading="eager">
+    </iframe>
+
+    <div class="loading" id="loading">
+        লাইভ ভিউ লোডিং...
+    </div>
+
+    <div class="error" id="errorBox">
+        <h2>ওয়েবসাইট দেখানো যাচ্ছে না</h2>
+
+        <p>
+            এই ওয়েবসাইটটি iframe-এর মাধ্যমে অন্য ওয়েবসাইটের
+            ভিতরে দেখানো নিষিদ্ধ করতে পারে।
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+/* ==================================================
+   শুধু এই URL পরিবর্তন করবেন
+   ================================================== */
+
+const LIVE_URL = "https://masumbillah6778.github.io/html/age-calculator.html";
+
+
+/* ==================================================
+   Live Website চালু
+   ================================================== */
+
+const liveView = document.getElementById("liveView");
+const loading = document.getElementById("loading");
+const errorBox = document.getElementById("errorBox");
+
+liveView.src = LIVE_URL;
+
+
+/* Website load হলে Loading সরিয়ে দিন */
+liveView.addEventListener("load", function () {
+
+    loading.style.display = "none";
+
+});
+
+
+/*
+   iframe load হতে সমস্যা হলে
+   browser সবসময় JavaScript দিয়ে
+   সঠিকভাবে শনাক্ত করতে পারে না।
+*/
+setTimeout(function () {
+
+    loading.style.display = "none";
+
+}, 8000);
+
+
+/* ==================================================
+   Enter চাপলে আবার Load
+   ================================================== */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        liveView.src = LIVE_URL;
+
+        loading.style.display = "block";
+
+        errorBox.style.display = "none";
+
+    }
+
+});
+
+
+</script>
+
+</body>
+</html>
